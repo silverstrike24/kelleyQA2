@@ -17,8 +17,13 @@ const UserForm = () => {
     //When Submit is clicked, show input values in console
     const submitClick = () => {
         console.log(`Name: ${name}, Age: ${age}`);
-
     };
+
+    const handleReset = () => {
+        setIsSubmitted(false);
+        setAge('');
+        setName('');
+    }
 
     return (
         //Form 1: Show if form is not submitted, Form 2: Show if form is submitted
@@ -26,7 +31,7 @@ const UserForm = () => {
             <h2>Create Profile</h2>
             
             {!isSubmitted ? (
-                <form onSubmit = {handleSubmit}> 
+                <form className = "form" onSubmit = {handleSubmit}> 
                     <div>
                     <input
                         type = "text"
@@ -53,7 +58,9 @@ const UserForm = () => {
                     <h3>Form Submitted!</h3>
                     <p>Name: {name}</p>
                     <p>Age: {age}</p>
+                    <button onClick = {handleReset}>Reset</button>
                 </div>
+                
             )}
         </div>
     );
