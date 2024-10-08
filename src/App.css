@@ -16,11 +16,18 @@
 
 .form {
   margin: 0 auto;
-  padding: 2em;
-  border-radius: 10px;
+  padding: 2rem;
+  border-radius: 0.5rem;
   text-align: center;
   position: relative;
-  background-color: #212222;
+  background-color: transparent;
+  backdrop-filter: blur(30px);
+}
+
+.avatar {
+  position: relative;
+  scale: 50%;
+  margin: 10rem;
 }
 
 #root::after, #root::before {
@@ -28,13 +35,13 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: conic-gradient(from var(--angle), transparent 70%, #8c00fc, #3500ff, #01fe01, #fffe37, #ff8600, #ed0003, #8c00fc);
+  background-image: repeating-conic-gradient(from var(--angle), transparent 70%, #8c00fc, #3500ff, #01fe01, #fffe37, #ff8600, #ed0003, #8c00fc);
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  padding: 3px;
-  border-radius: 10px;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
   animation: 2s spin linear infinite;
 }
 
@@ -50,4 +57,18 @@
   to {
     --angle: 360deg;
   }
+}
+
+.button {
+  content: '';
+  position: absolute;
+  height: 25%;
+  width: 50%;
+  background-image: repeating-conic-gradient(from var(--angle), transparent 80%, #8c00fc);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 0.1rem;
+  margin-top: 3rem;
+  border-radius: 0.5rem;
 }

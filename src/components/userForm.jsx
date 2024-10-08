@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import { createAvatar } from '@dicebear/core';
+import { lorelei } from '@dicebear/collection';
+import { toPng } from '@dicebear/converter';
+import { adventurer } from '@dicebear/collection';
 
 const UserForm = () => {
     //Set default values on form
@@ -7,6 +10,9 @@ const UserForm = () => {
     const [age, setAge] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     
+    useEffect(() => {
+        fetch('https://api.dicebear.com/9.x/adventurer/svg?seed=Robert');
+    }, [])
     //Submit Button Function
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,7 +49,7 @@ const UserForm = () => {
                     </div>
                     <div>
                         <input
-                            type = "number"
+                            type = "text"
                             placeholder = "Enter your Age"
                             value = {age}
                             onChange = {(e) =>
@@ -51,11 +57,14 @@ const UserForm = () => {
                             required
                         />
                     </div>
-                    <button onClick = {submitClick}>Submit</button>
+                    <button className = "button" onClick = {submitClick}>Submit</button>
                 </form>
             ) : (
                 <div>
                     <h3>Form Submitted!</h3>
+                    <img className = 'avatar'
+  src="https://api.dicebear.com/9.x/adventurer/svg?seed=Robert"
+  alt="avatar" />
                     <p>Name: {name}</p>
                     <p>Age: {age}</p>
                     <button onClick = {handleReset}>Reset</button>
